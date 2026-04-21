@@ -1,5 +1,7 @@
 const API = "https://saas-backend-q4qp.onrender.com";
 
+let revenueChartInstance = null;
+
 // LOGIN
 async function login() {
   const email = document.getElementById("email").value;
@@ -51,6 +53,61 @@ async function register() {
   } catch (error) {
     alert(error.message);
   }
+}
+
+function renderChart() {
+  const ctx = document.getElementById("revenueChart");
+
+  if (!ctx) return;
+
+  if (revenueChartInstance) {
+    revenueChartInstance.destroy();
+  }
+
+  revenueChartInstance = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      datasets: [
+        {
+          label: "Revenue",
+          data: [400, 650, 800, 720, 1100, 1200],
+          borderColor: "#6366f1",
+          backgroundColor: "rgba(99, 102, 241, 0.15)",
+          fill: true,
+          tension: 0.35
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          labels: {
+            color: "#f8fafc"
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: "#94a3b8"
+          },
+          grid: {
+            color: "rgba(255,255,255,0.06)"
+          }
+        },
+        y: {
+          ticks: {
+            color: "#94a3b8"
+          },
+          grid: {
+            color: "rgba(255,255,255,0.06)"
+          }
+        }
+      }
+    }
+  });
 }
 
 async function loadDashboard() {
@@ -106,6 +163,8 @@ async function loadDashboard() {
         `;
       });
     }
+
+    renderChart();
   } catch (error) {
     alert(error.message);
   }
