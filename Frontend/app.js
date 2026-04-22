@@ -152,6 +152,47 @@ function renderAnalyticsChart() {
   });
 }
 
+async function loadCustomers() {
+  const token = localStorage.getItem("token");
+  const table = document.getElementById("customers-table");
+
+  if (!token || !table) return;
+
+  try {
+    const res = await fetch(`${API}/customers`, {
+      method: "GET",
+      headers: {
+        Authorization: token
+      }
+    });
+
+    const users = await res.json();
+
+    if (!res.ok) {
+      throw new Error(users.error || "Failed to load customers");
+    }
+
+    table.innerHTML = "";
+
+    users.forEach((user) => {
+      table.innerHTML += `
+        <tr>
+          <td>${user.email}</td>
+          <td>${user._id}</td>
+          <td>Free</td>
+          <td>Active</td>
+        </tr>
+      `;
+    });
+  } catch (error) {
+    table.innerHTML = `
+      <tr>
+        <td colspan="4">${error.message}</td>
+      </tr>
+    `;
+  }
+}
+
 function setupNavigation() {
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = document.querySelectorAll(".content-section");
@@ -179,6 +220,10 @@ function setupNavigation() {
       if (targetSection === "analytics-section") {
         renderAnalyticsChart();
       }
+
+      if (targetSection === "customers-section") {
+        loadCustomers();
+      }
     });
   });
 }
@@ -190,6 +235,7 @@ function setupSettingsForm() {
   if (!form) return;
 
   const savedEmail = localStorage.getItem("userEmail");
+  const savedName = localStorage.getItem("userName");
   const emailInput = document.getElementById("profile-email");
   const nameInput = document.getElementById("profile-name");
 
@@ -197,7 +243,9 @@ function setupSettingsForm() {
     emailInput.value = savedEmail;
   }
 
-  if (nameInput) {
+  if (savedName && nameInput) {
+    nameInput.value = savedName;
+  } else if (nameInput) {
     nameInput.value = "João Victor";
   }
 
@@ -278,6 +326,8 @@ async function loadDashboard() {
 
 function logout() {
   localStorage.removeItem("token");
+  localStorage.removeItem("userEmail");
+  localStorage.removeItem("userName");
   window.location.href = "index.html";
 }
 
