@@ -133,6 +133,25 @@ app.get("/dashboard", (req, res) => {
   }
 });
 
+// ADICIONE ESTA ROTA AQUI
+app.get("/customers", async (req, res) => {
+  try {
+    const token = req.headers.authorization;
+
+    if (!token) {
+      return res.status(401).json({ error: "Token not provided" });
+    }
+
+    jwt.verify(token, SECRET);
+
+    const users = await User.find().select("-password");
+
+    res.json(users);
+  } catch {
+    res.status(401).json({ error: "Unauthorized" });
+  }
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
