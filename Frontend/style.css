@@ -310,3 +310,48 @@ canvas {
     padding: 18px;
   }
 }
+
+.content-section {
+  display: none;
+}
+
+.active-section {
+  display: block;
+}
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 500px;
+}
+
+.settings-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  outline: none;
+}
+
+.settings-form input::placeholder {
+  color: #cbd5e1;
+}
+
+.save-btn {
+  width: fit-content;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+}
+
+.settings-message {
+  margin-top: 14px;
+  color: #86efac;
+}

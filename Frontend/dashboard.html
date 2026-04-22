@@ -14,10 +14,10 @@
         <div class="brand">JV SaaS</div>
 
         <nav class="sidebar-nav">
-          <a href="#" class="active">Dashboard</a>
-          <a href="#">Analytics</a>
-          <a href="#">Customers</a>
-          <a href="#">Settings</a>
+          <a href="#" class="nav-link active" data-section="dashboard-section">Dashboard</a>
+          <a href="#" class="nav-link" data-section="analytics-section">Analytics</a>
+          <a href="#" class="nav-link" data-section="customers-section">Customers</a>
+          <a href="#" class="nav-link" data-section="settings-section">Settings</a>
         </nav>
       </div>
 
@@ -25,65 +25,184 @@
     </aside>
 
     <main class="main">
-      <header class="topbar">
-        <div>
-          <h1>Dashboard Overview</h1>
-          <p id="welcome-text">Loading user...</p>
-        </div>
-      </header>
+      <!-- DASHBOARD -->
+      <section id="dashboard-section" class="content-section active-section">
+        <header class="topbar">
+          <div>
+            <h1>Dashboard Overview</h1>
+            <p id="welcome-text">Loading user...</p>
+          </div>
+        </header>
 
-      <section class="stats-grid" id="stats-grid"></section>
+        <section class="stats-grid" id="stats-grid"></section>
 
-      <section class="panel-grid">
-        <div class="panel">
+        <section class="panel-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Revenue Analytics</h2>
+              <span class="badge">Live</span>
+            </div>
+            <canvas id="revenueChart"></canvas>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Quick Insights</h2>
+            </div>
+            <div class="insights-list">
+              <div class="insight-item">
+                <span>Monthly Growth</span>
+                <strong>+18.4%</strong>
+              </div>
+              <div class="insight-item">
+                <span>New Customers</span>
+                <strong>+42</strong>
+              </div>
+              <div class="insight-item">
+                <span>Churn Rate</span>
+                <strong>2.1%</strong>
+              </div>
+              <div class="insight-item">
+                <span>Conversion</span>
+                <strong>6.8%</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
           <div class="panel-header">
-            <h2>Revenue Analytics</h2>
-            <span class="badge">Live</span>
+            <h2>Metrics Table</h2>
           </div>
-          <canvas id="revenueChart"></canvas>
-        </div>
 
-        <div class="panel">
-          <div class="panel-header">
-            <h2>Quick Insights</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody id="metrics-table"></tbody>
+            </table>
           </div>
-          <div class="insights-list">
-            <div class="insight-item">
-              <span>Monthly Growth</span>
-              <strong>+18.4%</strong>
-            </div>
-            <div class="insight-item">
-              <span>New Customers</span>
-              <strong>+42</strong>
-            </div>
-            <div class="insight-item">
-              <span>Churn Rate</span>
-              <strong>2.1%</strong>
-            </div>
-            <div class="insight-item">
-              <span>Conversion</span>
-              <strong>6.8%</strong>
-            </div>
-          </div>
-        </div>
+        </section>
       </section>
 
-      <section class="panel">
-        <div class="panel-header">
-          <h2>Metrics Table</h2>
-        </div>
+      <!-- ANALYTICS -->
+      <section id="analytics-section" class="content-section">
+        <header class="topbar">
+          <div>
+            <h1>Analytics</h1>
+            <p>Track product performance and growth trends.</p>
+          </div>
+        </header>
 
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Metric</th>
-                <th>Value</th>
-              </tr>
-            </thead>
-            <tbody id="metrics-table"></tbody>
-          </table>
-        </div>
+        <section class="panel-grid">
+          <div class="panel">
+            <div class="panel-header">
+              <h2>Monthly Performance</h2>
+            </div>
+            <canvas id="analyticsChart"></canvas>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <h2>KPI Summary</h2>
+            </div>
+            <div class="insights-list">
+              <div class="insight-item">
+                <span>Visits</span>
+                <strong>12,450</strong>
+              </div>
+              <div class="insight-item">
+                <span>Signups</span>
+                <strong>1,284</strong>
+              </div>
+              <div class="insight-item">
+                <span>Paid Users</span>
+                <strong>326</strong>
+              </div>
+              <div class="insight-item">
+                <span>Bounce Rate</span>
+                <strong>28%</strong>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- CUSTOMERS -->
+      <section id="customers-section" class="content-section">
+        <header class="topbar">
+          <div>
+            <h1>Customers</h1>
+            <p>Manage your customer base.</p>
+          </div>
+        </header>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Customer List</h2>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Plan</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="customers-table">
+                <tr>
+                  <td>Ana Silva</td>
+                  <td>ana@email.com</td>
+                  <td>Pro</td>
+                  <td>Active</td>
+                </tr>
+                <tr>
+                  <td>Lucas Costa</td>
+                  <td>lucas@email.com</td>
+                  <td>Starter</td>
+                  <td>Active</td>
+                </tr>
+                <tr>
+                  <td>Maria Souza</td>
+                  <td>maria@email.com</td>
+                  <td>Enterprise</td>
+                  <td>Pending</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <!-- SETTINGS -->
+      <section id="settings-section" class="content-section">
+        <header class="topbar">
+          <div>
+            <h1>Settings</h1>
+            <p>Update your account preferences.</p>
+          </div>
+        </header>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Profile Settings</h2>
+          </div>
+
+          <form class="settings-form" id="settings-form">
+            <input type="text" id="profile-name" placeholder="Your name" />
+            <input type="email" id="profile-email" placeholder="Your email" />
+            <button type="submit" class="save-btn">Save Changes</button>
+          </form>
+
+          <p id="settings-message" class="settings-message"></p>
+        </section>
       </section>
     </main>
   </div>
