@@ -178,7 +178,7 @@ async function loadCustomers() {
       table.innerHTML += `
         <tr>
           <td>${user.email}</td>
-          <td>${user._id}</td>
+          <td>${user._id ? user._id.slice(-6) : "N/A"}</td>
           <td>Free</td>
           <td>Active</td>
         </tr>
