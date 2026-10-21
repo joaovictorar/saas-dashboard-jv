@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    // Saída: JavaScript moderno, suportado pelo Node 20+
+    "target": "es2022",
+    // "nodenext" segue as regras reais do Node: como o package.json tem
+    // "type": "commonjs", o tsc gera require()/module.exports em dist/
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+
+    "rootDir": "src",
+    "outDir": "dist",
+
+    // Liga todas as checagens rígidas (noImplicitAny, strictNullChecks, ...)
+    "strict": true,
+    // Acessar arr[i] ou obj[chave] retorna "T | undefined"
+    "noUncheckedIndexedAccess": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "sourceMap": true
+  },
+  "include": ["src"]
+}
