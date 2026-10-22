@@ -8,8 +8,10 @@ Dashboard SaaS com cadastro, login com JWT, rota protegida, métricas, gráficos
 
 | Parte | Onde | URL |
 | --- | --- | --- |
-| Front-end | Vercel | _adicione aqui a URL da Vercel_ |
+| Front-end | Vercel | https://saas-dashboard-jv.vercel.app |
 | API | Render | https://saas-backend-q4qp.onrender.com |
+
+> **Aviso:** a API roda no plano gratuito do Render, que desliga o servidor depois de um tempo sem uso. A primeira requisição pode levar uns 50 segundos enquanto ele liga de novo; as seguintes respondem normalmente.
 
 ## Estrutura
 
